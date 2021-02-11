@@ -11,10 +11,14 @@ public class Board {
     public static final int SIZE = 4;
 
     /**
+     * The number of the empty tile.
+     */
+    public static final int EMPTY = SIZE * SIZE;
+
+    /**
      * All of the tiles on the board.
      * <p>
-     * Each tile is a number between {@code 1} and {@code SIZE * SIZE}, where the largest represents the empty tile.
-     * There is exactly one tile with each number.
+     * Each tile is a number between {@code 1} and {@code EMPTY}. There is exactly one tile with each number.
      */
     private final int[][] tiles = new int[SIZE][SIZE];
 
@@ -37,5 +41,9 @@ public class Board {
                 tiles[i][j] = i * SIZE + j + 1;
         x = SIZE - 1;
         y = SIZE - 1;
+    }
+
+    public int get(int x, int y) {
+        return tiles[y][x];
     }
 }
