@@ -1,0 +1,6 @@
+# output binaries
+out
+
+# IntelliJ files
+.idea
+*.iml
