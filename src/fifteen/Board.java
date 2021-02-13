@@ -61,10 +61,22 @@ public class Board {
             case RIGHT -> nx--;
         }
         if (nx < 0 || nx >= SIZE || ny < 0 || ny >= SIZE) return;
-        int movedTile = tiles[ny][nx];
-        tiles[ny][nx] = EMPTY;
-        tiles[y][x] = movedTile;
+        swap(x, y, nx, ny);
         x = nx;
         y = ny;
+    }
+
+    /**
+     * Swap the tile at ({@code x1}, {@code x2}) and ({@code x1}, {@code x2}).
+     *
+     * @param x1 the x coordinate of the first tile
+     * @param y1 the y coordinate of the first tile
+     * @param x2 the x coordinate of the second tile
+     * @param y2 the y coordinate of the second tile
+     */
+    public void swap(int x1, int y1, int x2, int y2) {
+        int temp = tiles[y1][x1];
+        tiles[y1][x1] = tiles[y2][x2];
+        tiles[y2][x2] = temp;
     }
 }
