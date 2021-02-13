@@ -2,6 +2,8 @@ package fifteen;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  * A pane containing a 15-puzzle.
@@ -55,6 +57,22 @@ public class FifteenPane extends JPanel {
 
     public FifteenPane() {
         setPreferredSize(new Dimension(SIZE * Board.SIZE, SIZE * Board.SIZE));
+        setFocusable(true);
+
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                Direction direction = switch (e.getKeyCode()) {
+                    case KeyEvent.VK_UP -> Direction.UP;
+                    case KeyEvent.VK_DOWN -> Direction.DOWN;
+                    case KeyEvent.VK_LEFT -> Direction.LEFT;
+                    case KeyEvent.VK_RIGHT -> Direction.RIGHT;
+                    default -> null;
+                };
+                board.move(direction);
+                repaint();
+            }
+        });
     }
 
     @Override

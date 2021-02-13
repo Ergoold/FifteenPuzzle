@@ -46,4 +46,25 @@ public class Board {
     public int get(int x, int y) {
         return tiles[y][x];
     }
+
+    /**
+     * Swaps the tile in {@code direction} relative to the empty tile with the empty tile.
+     *
+     * @param direction the direction to swap to
+     */
+    public void move(Direction direction) {
+        int nx = x, ny = y;
+        switch (direction) {
+            case UP -> ny++;
+            case DOWN -> ny--;
+            case LEFT -> nx++;
+            case RIGHT -> nx--;
+        }
+        if (nx < 0 || nx >= SIZE || ny < 0 || ny >= SIZE) return;
+        int movedTile = tiles[ny][nx];
+        tiles[ny][nx] = EMPTY;
+        tiles[y][x] = movedTile;
+        x = nx;
+        y = ny;
+    }
 }
