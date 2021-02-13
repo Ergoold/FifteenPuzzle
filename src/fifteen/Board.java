@@ -41,7 +41,7 @@ public class Board {
                 tiles[i][j] = i * SIZE + j + 1;
         x = SIZE - 1;
         y = SIZE - 1;
-        for (int i = 0; i < 80; i++) move(Direction.nextDirection());
+        for (int i = 0; i < 80;) if (move(Direction.nextDirection())) i++;
     }
 
     public int get(int x, int y) {
@@ -52,8 +52,9 @@ public class Board {
      * Swaps the tile in {@code direction} relative to the empty tile with the empty tile.
      *
      * @param direction the direction to swap to
+     * @return {@code true} if the move was valid, {@code false} otherwise
      */
-    public void move(Direction direction) {
+    public boolean move(Direction direction) {
         int nx = x, ny = y;
         switch (direction) {
             case UP -> ny++;
@@ -61,10 +62,11 @@ public class Board {
             case LEFT -> nx++;
             case RIGHT -> nx--;
         }
-        if (nx < 0 || nx >= SIZE || ny < 0 || ny >= SIZE) return;
+        if (nx < 0 || nx >= SIZE || ny < 0 || ny >= SIZE) return false;
         swap(x, y, nx, ny);
         x = nx;
         y = ny;
+        return true;
     }
 
     /**
