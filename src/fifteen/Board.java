@@ -41,6 +41,7 @@ public class Board {
                 tiles[i][j] = i * SIZE + j + 1;
         x = SIZE - 1;
         y = SIZE - 1;
+        for (int i = 0; i < 80; i++) move(Direction.nextDirection());
     }
 
     public int get(int x, int y) {
