@@ -13,7 +13,7 @@ public class FifteenPane extends JPanel {
     /**
      * The size of each tile, in pixels.
      */
-    private static final int SIZE = 50;
+    private static final int SIZE = 60;
 
     /**
      * The color of tiles in even positions.
