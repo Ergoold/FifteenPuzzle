@@ -41,7 +41,7 @@ public class Board {
                 tiles[i][j] = i * SIZE + j + 1;
         x = SIZE - 1;
         y = SIZE - 1;
-        for (int i = 0; i < 80;) if (move(Direction.nextDirection())) i++;
+        for (int i = 0; i < 80; ) if (move(Direction.nextDirection())) i++;
     }
 
     public int get(int x, int y) {
@@ -81,5 +81,13 @@ public class Board {
         int temp = tiles[y1][x1];
         tiles[y1][x1] = tiles[y2][x2];
         tiles[y2][x2] = temp;
+    }
+
+    public boolean isSolved() {
+        for (int i = 0; i < SIZE; i++)     // rows (y)
+            for (int j = 0; j < SIZE; j++) // cols (x)
+                if (tiles[i][j] != i * SIZE + j + 1)
+                    return false;
+        return true;
     }
 }
