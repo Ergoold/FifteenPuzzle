@@ -84,7 +84,7 @@ public class FifteenPane extends JPanel {
                     g.setColor(EMPTY_TILE_COLOR);
                     g.fillRect(j * SIZE, i * SIZE, SIZE, SIZE);
                 } else {
-                    g.setColor(((j % 2) ^ (i % 2)) == 0 ? EVEN_TILE_COLOR : ODD_TILE_COLOR);
+                    g.setColor(board.get(j, i) % 2 == 0 ? EVEN_TILE_COLOR : ODD_TILE_COLOR);
                     g.fillRect(j * SIZE, i * SIZE, SIZE, SIZE);
                     g.setColor(BORDER_COLOR);
                     g.drawRect(j * SIZE, i * SIZE, SIZE, SIZE);
