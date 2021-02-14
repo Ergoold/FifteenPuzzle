@@ -2,8 +2,7 @@ package fifteen;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 /**
  * A pane containing a 15-puzzle.
@@ -71,16 +70,30 @@ public class FifteenPane extends JPanel {
                 };
                 board.move(direction);
                 repaint();
-                if (board.isSolved()) {
-                    int option = JOptionPane.showConfirmDialog(FifteenPane.this,
-                            "You Win! Play Again?", "WinError",
-                            JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-                    if (option == JOptionPane.CANCEL_OPTION) System.exit(0);
-                    board = new Board();
-                    repaint();
-                }
+                showDialogIfSolved();
             }
         });
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                int x = e.getX() / SIZE;
+                int y = e.getY() / SIZE;
+                board.click(x, y);
+                repaint();
+                showDialogIfSolved();
+            }
+        });
+    }
+
+    public void showDialogIfSolved() {
+        if (board.isSolved()) {
+            int option = JOptionPane.showConfirmDialog(FifteenPane.this,
+                    "You Win! Play Again?", "WinError",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+            if (option == JOptionPane.CANCEL_OPTION) System.exit(0);
+            board = new Board();
+            repaint();
+        }
     }
 
     @Override

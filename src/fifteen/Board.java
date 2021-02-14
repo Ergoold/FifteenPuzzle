@@ -70,6 +70,21 @@ public class Board {
     }
 
     /**
+     * Clicks on a certain tile, swapping it with the empty tile if they are adjacent.
+     *
+     * @param x the x coordinate of the clicked tile
+     * @param y the y coordinate of the clicked tile
+     */
+    public void click(int x, int y) {
+        if (((this.x == x + 1 || this.x == x - 1) && this.y == y)
+                || ((this.y == y + 1 || this.y == y - 1) && this.x == x)) {
+            swap(x, y, this.x, this.y);
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    /**
      * Swap the tile at ({@code x1}, {@code x2}) and ({@code x1}, {@code x2}).
      *
      * @param x1 the x coordinate of the first tile
