@@ -61,6 +61,9 @@ public class Board {
             case DOWN -> ny--;
             case LEFT -> nx++;
             case RIGHT -> nx--;
+            case NONE -> {
+                return false;
+            }
         }
         if (nx < 0 || nx >= SIZE || ny < 0 || ny >= SIZE) return false;
         swap(x, y, nx, ny);

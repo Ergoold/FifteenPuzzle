@@ -66,7 +66,7 @@ public class FifteenPane extends JPanel {
                     case KeyEvent.VK_DOWN -> Direction.DOWN;
                     case KeyEvent.VK_LEFT -> Direction.LEFT;
                     case KeyEvent.VK_RIGHT -> Direction.RIGHT;
-                    default -> null;
+                    default -> Direction.NONE;
                 };
                 board.move(direction);
                 repaint();
