@@ -13,11 +13,11 @@ public enum Direction {
 
     public static Direction nextDirection() {
         return switch (RANDOM.nextInt(4)) {
-            case 0 -> Direction.UP;
-            case 1 -> Direction.DOWN;
-            case 2 -> Direction.LEFT;
-            case 3 -> Direction.RIGHT;
-            default -> Direction.NONE;
+            case 0 -> UP;
+            case 1 -> DOWN;
+            case 2 -> LEFT;
+            case 3 -> RIGHT;
+            default -> NONE;
         };
     }
 }
